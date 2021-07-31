@@ -1,0 +1,36 @@
+
+
+body{
+
+    display:  table;
+    
+    background-image: url("https://www.picgaga.com/uploads/wallpaper/4k-images/svPY7zANzkyf-4k-images-hd-landscape-free-pictures.jpg");
+   
+    background-repeat: no-repeat;
+    
+    background-position: center;
+   
+    background-attachment: fixed;
+   
+    background-size: cover;
+
+    
+}
+.space{
+    margin-top: 5%;
+}
+.leftPanel{
+    display: table;
+    position: absolute;
+
+    width: 400px;
+    height: 100%;
+    background-color: #6E99B8;
+}
+
+.loginPanel
+{
+    display: table-cell;
+    vertical-align: center;
+    padding: 10%;
+}
