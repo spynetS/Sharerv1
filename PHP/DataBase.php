@@ -2,8 +2,8 @@
 
 class DataBase
 {
-    public $dbServername = "localhost";
-    public $dbUsername = "root";
+    public $dbServername = "";
+    public $dbUsername = "";
     public $dbPassword = "";
     public $dbName = "test";
 
@@ -19,10 +19,6 @@ class DataBase
         if($query)
             echo 'data inserted succesfully';
     }
-    public function sendSql($sql)
-    {
-        $result = mysqli_query($this->getConnection(),$sql);
-    }
     public function getConnection()
     {
         $conn = mysqli_connect($this->dbServerName,$this->dbUsername,$this->dbPassword,$this->dbName);
@@ -34,9 +30,5 @@ class DataBase
         return $result;
     }
 
-    public function getArray($sql)
-    {
-        $result = mysqli_query($this->getConnection(),$sql);
-        return mysqli_fetch_array($result);
-    }
+
 }
