@@ -2,8 +2,8 @@
 
 class DataBase
 {
-    public $dbServername = "localhost";
-    public $dbUsername = "root";
+    public $dbServername = "";
+    public $dbUsername = "";
     public $dbPassword = "";
     public $dbName = "test";
 
