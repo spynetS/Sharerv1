@@ -1,12 +1,14 @@
 <?php
 
 include('DataBase.php');
+include('Utilitis.php');
 
 
 $password1 = $_POST['password'];
 $password2 = $_POST['password1'];
 $db = new DataBase;
-    
+$sd = new utils();
+
 if($password1===$password2)
 {
     $EmailResult = $db->get("SELECT * FROM Users WHERE Email ='{$_POST['Email']}'");
@@ -15,16 +17,24 @@ if($password1===$password2)
     if(mysqli_fetch_array($UsernameResult)['Username']!=$_POST['Username'] && mysqli_fetch_array($EmailResult)['Email']!=$_POST['Email'])
     {
         $db->send($db->getConnection());
-        header("Location: '.$uri.'/Sharer/html/index.html");
+        
+        $db->sendSql(
+            "CREATE TABLE {$_POST['Username']}Files (
+            FileId int AUTO_INCREMENT,
+            FileData varchar(255),
+            FileType varchar(255),
+            PRIMARY KEY (FileId)
+        );");
+        $sd->setPage('/sharer/html/index.html');    
     }
     else
     {
         echo 'allready exist bre';
-        header("Location: '.$uri.'/Sharer/html/signup.html");
+        $sd->setPage('/sharer/html/index.html');    
     }
 }
 else
 {
-    header("Location: '.$uri.'/sharer/html/signup.html");
+    $sd->setPage('/sharer/html/index.html');    
 }
 
