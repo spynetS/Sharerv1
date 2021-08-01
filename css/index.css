@@ -15,6 +15,20 @@ body{
 
     
 }
+
+.linker{
+    text-decoration: none; 
+    margin-top: 10px;
+    text-align: center; 
+    color: white; 
+}
+.linker:hover
+{
+    text-decoration: none; 
+    margin-top: 10px;
+    text-align: center; 
+    color: rgb(120, 120, 220); 
+}
 .space{
     margin-top: 5%;
 }

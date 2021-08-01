@@ -55,14 +55,23 @@
 
     <div id="Menu" onmouseleave="showMenu()" class="sidebar col" >
       <div class="row" style="text-align: right; margin-right: 20px; margin-top: 100px; " >
-        <a class="sidebarText" style="margin-top: 20px; color:rgba(75, 144, 194, 1); " >Home</a><hr>
-        <a class="sidebarText" style="margin-top: 20px;" >Send</a><hr>
-        <a class="sidebarText" style="margin-top: 20px;" >Library</a><hr>
-        <a class="sidebarText" style="margin-top: 20px;" >Friends</a>
-        <a class="sidebarText" style="margin-top: 20px; bottom: 120px; position: absolute; " >Logout</a><hr>
+        <a href="home.php" class="sidebarText" style="margin-top: 20px; color:rgba(75, 144, 194, 1);" >Home</a><hr>
+        <a href="Upload.html" class="sidebarText" style="margin-top: 20px;" >Upload</a><hr>
+        <a href="Library.php" class="sidebarText" style="margin-top: 20px;" >Library</a><hr>
+        <a href="#" class="sidebarText" style="margin-top: 20px;" >Friends</a>
+        <a href="index.html" class="sidebarText" style="margin-top: 20px; bottom: 120px; position: absolute; " >Logout</a><hr>
       </div>      
       <footer style="position: absolute;" class="footer" style="bottom: 0;">
+      <img style="width:50px;height: 50px;" src="<?php
+      
+      include('../PHP/DataBase.php');
+      $db = new DataBase();
+      $result = $db->get("SELECT profilepicture FROM users WHERE Username='"."{$_SESSION['username']}"."'");
 
+      echo '../Resorces/Images/HappyPeople2.png'
+      
+      ?>" alt="">
+      <?php  echo $_SESSION['username']?>
       </footer>
     </div>
     <img onclick="showMenu()" onmouseenter="showMenu()" class="HamburgerButton" src="../Resorces/Icons/icons8-menu-384-blue.png" alt="">
@@ -85,21 +94,10 @@
 
       </div>
       <div style=" text-align: center; height: 1000px;" >
-        <form action="../PHP/SendFiles.php" method="POST" >
-          <label name="list" style="color: white;" ></label>
-          <img id="img" src="../Resorces/Images/HappyPeople.png" alt="">
-          <input id="file" name="file" class="btn btn-primary" type="file">        
-          <label name="label" id="label"></label>
-          <input onmouseenter="addImg()" class="btn btn-primary" type="submit">        
-        </form>
+        
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>  
-    
-    <footer class="footer" >
-  
-  
-    </footer>
   
   </body>
  

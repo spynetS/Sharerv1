@@ -1,7 +1,7 @@
 <?php
 
 include('DataBase.php');
-include('Utilitis.php');
+require_once('Utilitis.php');
 
 
 $password1 = $_POST['password'];
@@ -21,8 +21,10 @@ if($password1===$password2)
         $db->sendSql(
             "CREATE TABLE {$_POST['Username']}Files (
             FileId int AUTO_INCREMENT,
-            FileData varchar(255),
-            FileType varchar(255),
+            FileData LONGBLOB,
+            TheFileName varchar(255),
+            FileSize int(255),
+            UploadDate datetime,
             PRIMARY KEY (FileId)
         );");
         $sd->setPage('/sharer/html/index.html');    
