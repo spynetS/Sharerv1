@@ -97,13 +97,14 @@ This project is existing mainly for me to learn webdevelopment but it has a func
 
 Clone the project and put the master folder inside server folder(in xampp put it in the htdocs). You have to create a dbConfig.json file inside the /Resorces/Private/ folder
 the file should look like this-->
+```
 {
     "servername" : "",
     "username": "",
     "password": "",
     "name": ""
 }
-
+```
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
