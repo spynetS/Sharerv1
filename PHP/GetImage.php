@@ -1,9 +1,11 @@
 <?php 
 // Include the database configuration file  
-require_once 'dbConfig.php'; 
+include('DataBase.php');
+
+$dbb = new DataBase();
 // Get image data from database 
 session_start();
-$result = $db->query("SELECT FileData FROM `{$_SESSION['username']}files` WHERE 1"); 
+$result = $db->get("SELECT FileData FROM `{$_SESSION['username']}files` WHERE 1"); 
 ?>
 
 <?php if($result->num_rows > 0){ ?> 

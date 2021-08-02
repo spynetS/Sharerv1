@@ -16,25 +16,27 @@
     <title>Library</title>
   </head>
   <body>
-  <script>
-        function showMenu()
-        {
-          var sidebar = document.getElementById("Menu");
-            if(sidebar.style.width=="0px")
-            {
-              sidebar.style.marginLeft = "0px";
-              sidebar.style.width = "200px";
-            }
-            else
-            {
-              sidebar.style.width = "0px";
-              sidebar.style.marginLeft = "-300px";
-            }
-        }
-     </script>
+    <script>
+          function showMenu()
+          {
+            var sidebar = document.getElementById("Menu");
+              if(sidebar.style.width=="0px")
+              {
+                sidebar.style.marginLeft = "0px";
+                sidebar.style.width = "200px";
+              }
+              else
+              {
+                sidebar.style.width = "0px";
+                sidebar.style.marginLeft = "-300px";
+              }
+          }
+      </script>
 
     <div class="header" ></div>
+    
     <div id="Menu" onmouseleave="showMenu()" class="sidebar col" >
+    
     <div class="row" style="text-align: right; margin-right: 20px; margin-top: 100px; " >
         <a href="home.php" class="sidebarText" style="margin-top: 20px; color:rgba(75, 144, 194, 1);" >Home</a><hr>
         <a href="Upload.html" class="sidebarText" style="margin-top: 20px;" >Upload</a><hr>
@@ -67,7 +69,7 @@
       
       </div>
         
-        <div class="middle" ">
+        <div class="middle" >
           <table name="table" class="table table-striped">
                 <thead>
                     <tr>
@@ -81,10 +83,14 @@
                   </thead>
                   <tbody name="tablebody">
                     <?php
-                      require_once '../PHP/dbConfig.php'; 
+                      //require_once '../PHP/dbConfig.php'; 
+                      require_once('../PHP/DataBase.php');
+                      $dbb = new DataBase();                      
                       // Get image data from database 
-                      $result = $db->query("SELECT * FROM `{$_SESSION['username']}files` WHERE 1"); 
-                      ?>
+
+                      $result = $dbb->sqli()->query("SELECT * FROM `{$_SESSION['username']}files` WHERE 1"); 
+
+                    ?>
                       
                       <?php if($result->num_rows > 0){ ?> 
                           <div class="gallery"> 

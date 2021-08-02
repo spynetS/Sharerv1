@@ -28,9 +28,9 @@ class DataBase
     }
     public function sqli()
     {
-        $sqli = new mysqli($this->$dbServername, $this->$dbUsername, $this->$dbPassword, $this->$dbName);  
-        if ($db->connect_error) {  
-            die("Connection failed: " . $db->connect_error);  
+        $sqli = new mysqli($this->dbServername, $this->dbUsername, $this->dbPassword, $this->dbName);  
+        if ($sqli->connect_error) {  
+            die("Connection failed: " . $sqli->connect_error);  
         }
         return $sqli;
     }
