@@ -94,16 +94,20 @@
                       
                       <?php if($result->num_rows > 0){ ?> 
                           <div class="gallery"> 
+                          
                           <?php while($row = $result->fetch_assoc()){ ?> 
                             <tr>    
+                              <form action="../PHP/DownloadImg.php" method="post" >
                                 <th scope="row"><?php echo $row['FileId'];?></th>
-                                <td><img style="width: 30px; height: 30px;" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['FileData']); ?>" /></td>
+                                <td><img name="img" style="width: 30px; height: 30px;" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['FileData']); ?>" /></td>
                                 <td><?php echo $row['TheFileName']; ?></td>
-                                <td><?php echo $row['FileSize']; ?></td>
+                                <td><?php echo $row['FileSize']/1000000; ?></td>
                                 <td><?php echo $row['UploadDate']; ?></td>
-                                <td><button class="btn btn-primary" >Download</button></td>
+                                <td><input type="Submit" value="Download" class="btn btn-primary" ></td>
                                 <td><button class="btn btn-primary" >Send</button></td>
                                 <td><button class="btn btn-danger" >Delete</button></td>
+                              </form>
+
                               </tr>
 
                                   <?php } ?> 
