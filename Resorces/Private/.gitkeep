@@ -1,0 +1,4 @@
+in private folder there is folders that should not be visible on git
+
+files inside is:
+dbConfig.json

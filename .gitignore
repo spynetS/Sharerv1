@@ -1,0 +1,5 @@
+# exclude everything
+Resorces/Private/*
+
+# exception to the rule
+!Resorces/Private/.gitkeep 
