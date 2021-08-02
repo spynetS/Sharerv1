@@ -63,7 +63,6 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -89,6 +88,7 @@ This project is existing mainly for me to learn webdevelopment but it has a func
 * [Bootstrap](https://getbootstrap.com)
 * [Javascript](https://www.javascript.com/)
 * [PHP](https://www.php.net/)
+* [XAMPP](https://www.apachefriends.org/index.html) 
 
 
 
@@ -112,23 +112,6 @@ This is an example of how to list things you need to use the software and how to
   ```sh
   npm install npm@latest -g
   ```
-
-### Installation
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```JS
-   const API_KEY = 'ENTER YOUR API';
-   ```
-
 
 
 <!-- USAGE EXAMPLES -->
