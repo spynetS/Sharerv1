@@ -57,4 +57,4 @@ if(!empty($_FILES["image"]["name"])) {
     }
 }
 $d = new utils();
-//$d->setPage("/sharer/html/Upload.html");
+$d->setPage("/sharer/html/Upload.html");
