@@ -86,7 +86,6 @@ This project is existing mainly for me to learn webdevelopment but it has a func
 
 ### Built With
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 * [Bootstrap](https://getbootstrap.com)
 * [Javascript](https://www.javascript.com/)
 * [PHP](https://www.php.net/)
@@ -170,9 +169,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Alfred Roos - alfred@stensatter.se
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/spynetS/Sharer](https://github.com/spynetS/Sharer/)
 
 
 
