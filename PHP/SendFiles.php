@@ -50,11 +50,14 @@ if(!empty($_FILES["image"]["name"])) {
          
         if($insert){ 
             $status = 'success'; 
-            $statusMsg = "File uploaded successfully."; 
+            echo $insert; 
+            echo "File uploaded successfully."; 
         }else{ 
-            $statusMsg = "File upload failed, please try again."; 
+            echo "File upload failed, please try again."; 
         }  
     }
+    else
+        echo "cant";
 }
 $d = new utils();
-$d->setPage("/sharer/html/Upload.html");
+//$d->setPage("/sharer/html/Upload.html");

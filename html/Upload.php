@@ -12,6 +12,9 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/Library.css" />
+    <link rel="stylesheet" href="../css/MainUi.css" />
+    <script type="text/javascript" src="../js/SidebarNavigate.js"></script>
+
     <script rel="js" href="../js/sendImg.js" ></script>
     <title>Library</title>
   </head>
@@ -36,13 +39,22 @@
     <div class="header" ></div>
     <div id="Menu" onmouseleave="showMenu()" class="sidebar col" >
       <div class="row" style="text-align: right; margin-right: 20px; margin-top: 100px; " >
-        <a href="home.php" class="sidebarText" style="margin-top: 20px; color:rgba(75, 144, 194, 1);" >Home</a><hr>
-        <a href="Upload.html" class="sidebarText" style="margin-top: 20px;" >Upload</a><hr>
-        <a href="Library.php" class="sidebarText" style="margin-top: 20px;" >Library</a><hr>
-        <a href="#" class="sidebarText" style="margin-top: 20px;" >Friends</a>
-        <a href="index.html" class="sidebarText" style="margin-top: 20px; bottom: 120px; position: absolute; " >Logout</a><hr>
+        <a onmousedown="navigate(this);" id="home" class="sidebarText" style="margin-top: 20px;" >Home</a><hr>
+        <a onmousedown="navigate(this);" id="Upload" class="sidebarText" style="margin-top: 20px;" >Upload</a><hr>
+        <a onmousedown="navigate(this);" id="Library" class="sidebarText" style="margin-top: 20px;" >Library</a><hr>
+        <a onmousedown="navigate(this);" id="Friends" class="sidebarText" style="margin-top: 20px;" >Friends</a>
+        <a onmousedown="navigate(this);" id="index" class="sidebarText" style="margin-top: 20px; bottom: 120px; position: absolute; " >Logout</a><hr>
+        <script>
+          //Set the selected page in menu
+          //document.getElementById(window.location.pathname);
+          var url = window.location.pathname;
+          var array = url.split('/');
+    
+          var lastsegment = array[array.length-1];
+          var el = document.getElementById(lastsegment.split('.')[0]);
+          el.style.color = "rgba(75, 144, 194, 1)";
+        </script>
       </div>    
-      <form action="../PHP/Library.php"><input type="submit"></form>
     
       <footer style="position: absolute;" class="footer" style="bottom: 0;">
         <img style="width:50px;height: 50px;" src="../Resorces/Images/HappyPeople2.png" alt="">
@@ -53,7 +65,7 @@
 
     <div style=" text-align: center; " >
       
-      <div style="background-color: white; width: 100%; height: 70px;" >
+      <div class="topbar">
           
             <div>
               <img class="UpperLogo" src="../Resorces/Images/Logo.png" alt="">
