@@ -32,7 +32,7 @@
       </form>
       
       <div class="row" > 
-        <a class="linker" href="Signup.html" >SignUp</a> 
+        <a class="linker" href="Signup.php" >SignUp</a> 
         <a class="linker" href="#">Forgot password?</a>
       </div>
 

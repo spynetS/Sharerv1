@@ -9,7 +9,7 @@ $password2 = $_POST['password1'];
 $db = new DataBase;
 $sd = new utils();
 
-if($password1===$password2)
+if($password1===$password2&&isset($_POST['username']))
 {
     $EmailResult = $db->get("SELECT * FROM Users WHERE Email ='{$_POST['Email']}'");
     $UsernameResult = $db->get("SELECT * FROM Users WHERE Username ='{$_POST['Username']}'");
