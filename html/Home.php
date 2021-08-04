@@ -33,24 +33,6 @@
               sidebar.style.marginLeft = "-300px";
             }
         }
-        function addImg()
-        {
-          var fileList = document.getElementById("file").files;
-          var fileReader = new FileReader();
-          if (fileReader && fileList && fileList.length) {
-            fileReader.readAsArrayBuffer(fileList[0]);
-            fileReader.onload = function () {
-                var imageData = fileReader.result;
-                alert(ab2str(imageData));
-                document.getElementById("label").value = ab2str(imageData);
-              };
-          }
-          else
-          alert("idk");
-        }
-        function ab2str(buf) {
-          return String.fromCharCode.apply(null, new Uint16Array(buf));
-        }
      </script>
 
     <div class="header" ></div>
@@ -76,16 +58,31 @@
         </script>
       </div>      
       <footer style="position: absolute;" class="footer" style="bottom: 0;">
-      <img style="width:50px;height: 50px;" src="<?php
-      
-      include('../PHP/DataBase.php');
-      $db = new DataBase();
-      $result = $db->get("SELECT profilepicture FROM users WHERE Username='"."{$_SESSION['username']}"."'");
+      <link rel="stylesheet" href="../css/profile.css">
+        <div style="display: table" >
+          <div style="display:table-cell;">
+          <input type="file"><img class="profile-header-img" src="<?php
+             require_once('../PHP/DataBase.php');
+             $dbb = new DataBase();                      
+             // Get image data from database 
+ 
+             $result = $dbb->sqli()->query("SELECT ProfilePicture FROM `users` WHERE Username='{$_SESSION['username']}'"); 
+             //
+             while($row = $result->fetch_assoc())
+             {
+               if(empty($row['ProfilePicture']))
+               {
+                echo "../Resorces/Images/UploadProfilepictureTemplate.png";
+               }
+               else
+                 echo "data:image/jpg;charset=utf8;base64,".base64_encode($row['ProfilePicture']);
+             }
+            
+            ?>" alt=""></img>
+          </div> 
+          <h3 style="display:table-cell; margin-left: 10px;" ><?php  echo $_SESSION['username']?></h2>
 
-      echo '../Resorces/Images/HappyPeople2.png'
-      
-      ?>" alt="">
-      <?php  echo $_SESSION['username']?>
+        </div>  
       </footer>
     </div>
     <img onclick="showMenu()" onmouseenter="showMenu()" class="HamburgerButton" src="../Resorces/Icons/icons8-menu-384-blue.png" alt="">
@@ -103,9 +100,7 @@
     <!-- From here  -->
 
     <div class="middle" >
-      <h1>Send to your friends now ass!</h1>
-      User <?php echo $_SESSION['username']; ?>
-
+      <h1>Send to your friends now!</h1>
       </div>
     </div>
 

@@ -15,7 +15,7 @@ function CanUpload($filesize)
 {$dbbb = new DataBase(); 
 
     $returnvalue = false;
-    $usersize = mysqli_fetch_array($dbbb->sqli()->query("SELECT librarysize FROM users WHERE Username='{$_SESSION['username']}'"))['librarysize'];
+    $usersize = mysqli_fetch_array($dbbb->sqli()->query("SELECT LibrarySize FROM users WHERE Username='{$_SESSION['username']}'"))['LibrarySize'];
     $files = ($dbbb->sqli()->query("SELECT FileSize FROM `{$_SESSION['username']}files` WHERE 1 "));
     $filesOccupation= 0;
     while($row = mysqli_fetch_array($files))

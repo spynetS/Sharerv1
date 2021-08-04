@@ -1,0 +1,21 @@
+
+/**
+ * Profile image component
+ */
+.profile-header-container{
+    margin: 0 auto;
+    text-align: middle;
+}
+
+.profile-header-img {
+    margin-top: 5px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    border: 2px solid rgb(253, 253, 253);
+}
+
+.profile-header {
+    padding: 54px;
+
+}

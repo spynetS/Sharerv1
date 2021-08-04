@@ -37,15 +37,16 @@ class DataBase
 
     public function send($conn)
     {
+        
         if($conn)
         echo 'connection successfully to database';
         $librarysize = 100000000;
-        $sql = "insert into users (Email,Username,Password,librarysize) values ('{$_POST['Email']}','{$_POST['Username']}','".password_hash($_POST['password'], PASSWORD_DEFAULT)."','{$librarysize}')";
+        $sql = "insert into users (Email,Username,Password,LibrarySize,ProfilePicture) values ('{$_POST['Email']}','{$_POST['Username']}','".password_hash($_POST['password'], PASSWORD_DEFAULT)."','{$librarysize}','')";
 
         $query = mysqli_query($conn,$sql);
 
         if($query)
-            echo 'data inserted succesfully';
+        return 'data inserted succesfully';
     }
     public function sendSql($sql)
     {

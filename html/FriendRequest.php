@@ -87,9 +87,9 @@
       
       <div class="middle" style="width: 50%; display:inline-block;margin-top: 20px;" class="btn btn-primary" >  
       <nav class="nav nav-pills nav-fill">
-        <a class="nav-link active" aria-current="page" href="#">Friends</a>
+        <a class="nav-link" href="Friends.php">Friends</a>
         <a class="nav-link" href="AddFriend.php">Add Friend</a>
-        <a class="nav-link" href="FriendRequest.php">Requests</a>
+        <a class="nav-link active" aria-current="page" href="#">Requests</a>
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Blocked</a>
       </nav>
 
@@ -102,20 +102,60 @@
               include_once('../PHP/User.php');
 
               $dB = new DataBase();   
-              $userfriendsresult = $dB->sqli()->query("SELECT * FROM `{$_SESSION['username']}friends` WHERE FriendRequest=0");
+              $userfriendsresult = $dB->sqli()->query("SELECT * FROM `{$_SESSION['username']}friends` WHERE FriendRequest=1");
               while($row = $userfriendsresult->fetch_assoc())
               {
                   echo '<tr><th scope="row">1</th>';
                   $result = $dB->sqli()->query("SELECT * FROM `users` WHERE user={$row['FriendUserid']}");
                   while($user = $result->fetch_assoc())
-                  {
+                  {                                 
+
                       $Myuser = new User();
                       $Myuser->setUsername($user['Username']);
-                      echo "<td><img name='img' style='width: 40px; height: 40px;' src='{$Myuser->getUserProfilePicture()}' /></td> \n";
-                      echo "<td>{$user['Username']}</td>\n";
-                      echo '<td><button class="btn btn-primary" >Send</button><button class="btn btn-danger" >Remove friend</button></td></tr>';
+                      echo "<form action='FriendRequest.php' method='POST' ><td><img name='img' style='width: 40px; height: 40px;' src='{$Myuser->getUserProfilePicture()}' /></td> \n";
+                      echo "<td><input type='text' class='indexInputHidden' readonly='readonly' name='FriendUsername' value='{$user['Username']}' ></td>\n";
+                      echo '<td><input type="submit" name="Accept" value="Accept" class="btn btn-primary" ><input class="btn btn-danger" type="submit" name="Decline" value="Decline" ></td></form></tr>';
                   }
               }
+              if(array_key_exists('Accept', $_POST)) {
+                    Accept();
+                }
+                else if(array_key_exists('Decline', $_POST)) {
+                    Decline();
+                }
+                function Accept() {
+                    //Set friendrequest to 0
+                    if(isset($_POST['FriendUsername'])){
+                        $dB = new DataBase();
+                        $friendidrs =$dB->sqli()->query("SELECT * FROM `users` WHERE Username='{$_POST['FriendUsername']}' ");
+                        while($row = $friendidrs->fetch_assoc())
+                        {
+                            $friendid = $row['user'];
+                        }
+                        $res = $dB->sqli()->query("UPDATE `{$_SESSION['username']}friends` SET `FriendRequest`='0' WHERE FriendUserid = '{$friendid}'");
+                    }
+                }
+                function Decline() {
+                    //Remove from friend from user 1 and two
+                    if(isset($_POST['FriendUsername'])){
+                        $dB = new DataBase();
+                        $friendidrs =$dB->sqli()->query("SELECT * FROM `users` WHERE Username='{$_POST['FriendUsername']}' ");
+                        while($row = $friendidrs->fetch_assoc())
+                        {
+                            $friendid = $row['user'];
+                        }
+                        $useridrs =$dB->sqli()->query("SELECT * FROM `users` WHERE Username='{$_SESSION['username']}' ");
+                        while($row = $useridrs->fetch_assoc())
+                        {
+                            $userid = $row['user'];
+                        }
+                        //                                              sagafriends                                       13
+                        $userRem = $dB->sqli()->query("DELETE FROM `{$_SESSION['username']}friends` WHERE FriendUserid='{$friendid}' ");
+                        //                                              spynet                                            12
+                        echo $_POST['FriendUsername'];
+                        $friendRem = $dB->sqli()->query("DELETE FROM `{$_POST['FriendUsername']}friends` WHERE FriendUserid='{$userid}' ");
+                    }
+                }
             ?>
               </tbody>            
             </table>

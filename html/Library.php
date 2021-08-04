@@ -80,7 +80,7 @@
               <img class="UpperLogo" src="../Resorces/Images/Logo.png" alt="">
             </div>
       
-      </div>
+            </div>
         
         <div class="middle" >
           <table name="table" class="table table-striped">
@@ -116,9 +116,8 @@
                                 <td><?php echo $row['TheFileName']; ?></td>
                                 <td><?php echo $row['FileSize']/1000000; ?></td>
                                 <td><?php echo $row['UploadDate']; ?></td>
-                                <td><input type="Submit" value="Download" class="btn btn-primary" ></td>
-                                <td><button class="btn btn-primary" >Send</button></td>
-                                <td><button class="btn btn-danger" >Delete</button></td>
+                                <td><input type="Submit" value="Download" class="btn btn-primary" ><button class="btn btn-primary" >Send</button><button class="btn btn-danger" >Delete</button></td>
+                                <td></td>
                               </form>
 
                               </tr>

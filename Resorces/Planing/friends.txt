@@ -1,0 +1,13 @@
+user1 adds user2 by username
+
+look for user with username and adds that users(user2) info (user id) to user1 
+we add to user2 user1's id and a 1 to friendrequest
+
+user2 shall get a notice and have to accept the friendrequest 
+
+if user2 accepts we make the friendrequest from 1 to 0 
+
+if user 2 declines 
+we remove user2's info in user1 and remove user1s info in user2
+
+the above will happen if any user removes the other user
