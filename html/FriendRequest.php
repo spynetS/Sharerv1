@@ -41,7 +41,7 @@
 
     <div id="Menu" onmouseleave="showMenu()" class="sidebar col" >
       <div class="row" style="text-align: right; margin-right: 20px; margin-top: 100px; " >
-        <a onmousedown="navigate(this);" id="home" class="sidebarText" style="margin-top: 20px;" >Home</a><hr>
+      <a onmousedown="navigate(this);" id="home" class="sidebarText" style="margin-top: 20px;" >Home</a><hr>
         <a onmousedown="navigate(this);" id="Upload" class="sidebarText" style="margin-top: 20px;" >Upload</a><hr>
         <a onmousedown="navigate(this);" id="Library" class="sidebarText" style="margin-top: 20px;" >Library</a><hr>
         <a onmousedown="navigate(this);" id="Friends" class="sidebarText" style="margin-top: 20px;" >Friends</a>
