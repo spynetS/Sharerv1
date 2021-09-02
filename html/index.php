@@ -1,3 +1,8 @@
+<?php
+
+  echo $_SERVER['REMOTE_ADDR'];
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -24,7 +29,7 @@
           
           <div class="col">
             <div class="row" >
-                <input type="submit" style="border-radius: 5px;" class="btn btn-primary" onclick="login()" ></button>
+                <input type="submit" style="border-radius: 5px;" class="btn btn-primary" value="Login" onclick="login()" ></button>
             </div>
             <div class="space" ></div>
             
