@@ -9,7 +9,7 @@ $password2 = $_POST['password1'];
 $db = new DataBase;
 $sd = new utils();
 
-if($password1===$password2&&isset($_POST['Username']))
+if($password1===$password2&&isset($_POST['Username'])&&filter_var($_POST['Email'], FILTER_VALIDATE_EMAIL))
 {
     $EmailResult = $db->get("SELECT * FROM Users WHERE Email ='{$_POST['Email']}'");
     $UsernameResult = $db->get("SELECT * FROM Users WHERE Username ='{$_POST['Username']}'");
@@ -33,17 +33,17 @@ if($password1===$password2&&isset($_POST['Username']))
             FriendRequest int(255),
             PRIMARY KEY (friendid)
         );");
-        //$sd->setPage('/sharer/html/index.html');    
+        $sd->setPage('/sharer/html/index.php');    
     }
     else
     {
         echo 'allready exist bre';
-       // $sd->setPage('/sharer/html/index.html');    
+        $sd->setPage('/sharer/html/signup.php');    
     }
 }
 else
 {
-    //$sd->setPage('/sharer/html/index.html');    
+    $sd->setPage('/sharer/html/index.php');    
 }
 
 exit();
