@@ -12,7 +12,8 @@ $FileSize;
 CanUpload(0);
 
 function CanUpload($filesize)
-{$dbbb = new DataBase(); 
+{
+    $dbbb = new DataBase(); 
 
     $returnvalue = false;
     $usersize = mysqli_fetch_array($dbbb->sqli()->query("SELECT LibrarySize FROM users WHERE Username='{$_SESSION['username']}'"))['LibrarySize'];

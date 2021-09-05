@@ -63,6 +63,6 @@ function rememberme($result)
     $db = new DataBase();
     $connected_device = $_SERVER['REMOTE_ADDR'];
     $userid = mysqli_fetch_array($result)['user'];
-    $d = $db->sqli()->query("INSERT INTO `autologin`(`Ip-adress`, `userid`) VALUES ('{$connected_device}','{$userid}')");
+    $d = $db->sqli()->query("INSERT INTO `autologin`(`ip-adress`, `userid`) VALUES ('{$connected_device}','{$userid}')");
 }
 
