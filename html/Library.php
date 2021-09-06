@@ -62,7 +62,7 @@
       
       include('../PHP/DataBase.php');
       $db = new DataBase();
-      $result = $db->get("SELECT profilepicture FROM users WHERE Username='"."{$_SESSION['username']}"."'");
+      $result = $db->get("SELECT profilepicture FROM Users WHERE Username='"."{$_SESSION['username']}"."'");
 
       echo '../Resorces/Images/HappyPeople2.png'
       

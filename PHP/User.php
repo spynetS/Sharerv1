@@ -20,7 +20,7 @@ class User
         $dbb = new DataBase();                      
         // Get image data from database 
 
-        $result = $dbb->sqli()->query("SELECT ProfilePicture FROM `users` WHERE Username='{$this->username}'"); 
+        $result = $dbb->sqli()->query("SELECT ProfilePicture FROM `Users` WHERE Username='{$this->username}'"); 
         //
         while($row = $result->fetch_assoc())
         {

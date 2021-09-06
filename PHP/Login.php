@@ -1,6 +1,10 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+echo "domamo😂️";
 
-include('DataBase.php');
+include_once('DataBase.php');
 require_once('Utilitis.php');
 $db = new DataBase();
 
@@ -35,10 +39,10 @@ if(($email==$UserNameEmail&&password_verify($password,$password1)))
     $result = $db->get("SELECT * FROM Users WHERE Email ='{$_POST['username']}'");
     
     $_SESSION['username'] = mysqli_fetch_array($result)['Username'];
-    rememberme($result);
-    $ut->setPage('/sharer/html/home.php');
+    //rememberme($result);
+    $ut->setPage('/Sharer/html/home.php');
     //Store the ipadress in table
-   
+       $sd->setPage('/Sharer/html/Home.php');
 
 
 }
@@ -48,12 +52,13 @@ else if($username==$UserNameEmail&&password_verify($password,$password1))
 {
     $result = $db->get("SELECT * FROM Users WHERE Username ='{$_POST['username']}'");
     $_SESSION['username'] = $_POST['username'];
-    rememberme($result);
+    //rememberme($result);
     $sd = new utils();
-    $sd->setPage('/sharer/html/home.php');
+    $sd->setPage('/Sharer/html/Home.php');
 }
-else
-echo "some wrong";
+else{
+	echo "some wrong";
+}
 
 function rememberme($result)
 {

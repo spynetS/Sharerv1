@@ -1,16 +1,22 @@
 <?php
-            require_once('../PHP/DataBase.php');
-            $dbb = new DataBase();                      
-            // Get image data from database 
+    
+    	include_once('Utilitis.php');
+    	
+    	$json = file_get_contents("../Resorces/Private/dbConfig.json");
+    	$data = json_decode($json, true);
 
-            $result = $dbb->sqli()->query("SELECT ProfilePicture FROM `users` WHERE Username='spy'"); 
-            //
-            $i = 0;
-            while($row = $result->fetch_assoc())
-            {
-                echo "data:image/jpg;charset=utf8;base64,".base64_encode($row['ProfilePicture']);
-                $i++;
-            }
-            if($i<=0)
-            echo "../Resorces/Images/HappyPeople.png";
-            
+        $dbServername = $data['servername'];
+        $dbUsername = $data['username'];
+        $dbPassword = $data['password'];
+        $dbName = $data['name'];
+    
+    $sqli = new mysqli($dbServername,$dbUsername,$dbPassword,$dbName);
+    $utils = new utils();
+    echo $utils->getHashedPas("asd");
+    $sqli->query(
+        "CREATE TABLE {$_POST['Username']}1friends (
+        friendid int AUTO_INCREMENT,
+        FriendUserid int(255),
+        FriendRequest int(255),
+        PRIMARY KEY (friendid)
+    );");

@@ -1,6 +1,8 @@
 <?php
-
-include('Utilitis.php"');
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+include('Utilitis.php');
 
 class DataBase
 {
@@ -41,7 +43,7 @@ class DataBase
         if($conn)
         echo 'connection successfully to database';
         $librarysize = 100000000;
-        $sql = "insert into users (Email,Username,Password,LibrarySize,ProfilePicture) values ('{$_POST['Email']}','{$_POST['Username']}','".password_hash($_POST['password'], PASSWORD_DEFAULT)."','{$librarysize}','')";
+        $sql = "insert into Users (Email,Username,Password,LibrarySize,ProfilePicture) values ('{$_POST['Email']}','{$_POST['Username']}','".password_hash($_POST['password'], PASSWORD_DEFAULT)."','{$librarysize}','')";
 
         $query = mysqli_query($conn,$sql);
 

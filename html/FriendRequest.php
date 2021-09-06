@@ -62,7 +62,7 @@
       
       include('../PHP/DataBase.php');
       $db = new DataBase();
-      $result = $db->get("SELECT profilepicture FROM users WHERE Username='"."{$_SESSION['username']}"."'");
+      $result = $db->get("SELECT profilepicture FROM Users WHERE Username='"."{$_SESSION['username']}"."'");
 
       echo '../Resorces/Images/HappyPeople2.png'
       
@@ -106,7 +106,7 @@
               while($row = $userfriendsresult->fetch_assoc())
               {
                   echo '<tr><th scope="row">1</th>';
-                  $result = $dB->sqli()->query("SELECT * FROM `users` WHERE user={$row['FriendUserid']}");
+                  $result = $dB->sqli()->query("SELECT * FROM `Users` WHERE user={$row['FriendUserid']}");
                   while($user = $result->fetch_assoc())
                   {                                 
 
@@ -127,7 +127,7 @@
                     //Set friendrequest to 0
                     if(isset($_POST['FriendUsername'])){
                         $dB = new DataBase();
-                        $friendidrs =$dB->sqli()->query("SELECT * FROM `users` WHERE Username='{$_POST['FriendUsername']}' ");
+                        $friendidrs =$dB->sqli()->query("SELECT * FROM `Users` WHERE Username='{$_POST['FriendUsername']}' ");
                         while($row = $friendidrs->fetch_assoc())
                         {
                             $friendid = $row['user'];
@@ -139,12 +139,12 @@
                     //Remove from friend from user 1 and two
                     if(isset($_POST['FriendUsername'])){
                         $dB = new DataBase();
-                        $friendidrs =$dB->sqli()->query("SELECT * FROM `users` WHERE Username='{$_POST['FriendUsername']}' ");
+                        $friendidrs =$dB->sqli()->query("SELECT * FROM `Users` WHERE Username='{$_POST['FriendUsername']}' ");
                         while($row = $friendidrs->fetch_assoc())
                         {
                             $friendid = $row['user'];
                         }
-                        $useridrs =$dB->sqli()->query("SELECT * FROM `users` WHERE Username='{$_SESSION['username']}' ");
+                        $useridrs =$dB->sqli()->query("SELECT * FROM `Users` WHERE Username='{$_SESSION['username']}' ");
                         while($row = $useridrs->fetch_assoc())
                         {
                             $userid = $row['user'];
