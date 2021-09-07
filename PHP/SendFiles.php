@@ -64,4 +64,4 @@ if(!empty($_FILES["image"]["name"])) {
         echo "cant";
 }
 $d = new utils();
-//$d->setPage("/sharer/html/Upload.php");
+$d->setPage("/sharer/html/Upload.php");
