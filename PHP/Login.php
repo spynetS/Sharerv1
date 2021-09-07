@@ -39,9 +39,9 @@ if(($email==$UserNameEmail&&password_verify($password,$password1)))
      
     $_SESSION['username'] = mysqli_fetch_array($result)['Username'];
     //rememberme($result);
-    $ut->setPage('/Sharer/html/home.php');
+    $ut->setPage('/sharer/html/home.php');
     //Store the ipadress in table
-       $sd->setPage('/Sharer/html/Home.php');
+       $sd->setPage('/sharer/html/Home.php');
 
 
 }
@@ -53,7 +53,7 @@ else if($username==$UserNameEmail&&password_verify($password,$password1))
      $_SESSION['username'] = $_POST['username'];
     //rememberme($result);
     $sd = new utils();
-    $sd->setPage('/Sharer/html/Home.php');
+    $sd->setPage('/sharer/html/Home.php');
 }
 else{
 	echo "some wrong";

@@ -39,17 +39,17 @@ if($password1===$password2&&isset($_POST['Username'])&&filter_var($_POST['Email'
             FriendRequest int(255),
             PRIMARY KEY (friendid)
         );");
-        $sd->setPage('/Sharer/html/index.php');    
+        $sd->setPage('/sharer/html/index.php');    
     }
     else
     {
         echo 'allready exist bre';
-        $sd->setPage('/Sharer/html/SignUp.php');    
+        $sd->setPage('/sharer/html/SignUp.php');    
     }
 }
 else
 {
-   // $sd->setPage('/Sharer/html/index.php');    
+    //$sd->setPage('/sharer/html/index.php');    
 }
 
 exit();
