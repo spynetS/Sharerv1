@@ -8,7 +8,7 @@ $db = new DataBase();
 $db->construct();
 
 $sql = 
-"CREATE TABLE UsersAre (
+"CREATE TABLE users (
 user int AUTO_INCREMENT,
 Email varchar(50),
 Username varchar(20),
