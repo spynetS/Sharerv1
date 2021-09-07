@@ -1,10 +1,14 @@
 <?php
- 
-// Include the database configuration file  
+
 include('DataBase.php');
 $dbb = new DataBase();
-// Get image data from database 
 session_start();
+
+if(array_key_exists('Download', $_POST))
+{
+
+// Include the database configuration file  
+// Get image data from database 
 $id = $_POST['id'];
 $sql = "SELECT * FROM `{$_SESSION['username']}files` WHERE FileId ='{$id}'"; // 1
 $res = $dbb->sqli()->query($sql);
@@ -24,3 +28,11 @@ header("Content-Length: ".$size);
 
 echo $image;
 exit();
+}
+else if(array_key_exists('Delete', $_POST)){
+    
+    echo "Deleting ".$_POST['id'];
+    echo " DELETE FROM `{$_SESSION['username']}files` WHERE FileId={$_POST['id']}";
+    $result = $dbb->sqli()->query("DELETE FROM `{$_SESSION['username']}files` WHERE FileId={$_POST['id']}");
+    echo $result;
+}
