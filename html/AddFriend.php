@@ -149,13 +149,13 @@
                            {
                               $dB = new DataBase();
                               $friendusername = $_POST['friendusername'];
-                              $friendidres = $dB->sqli()->query("SELECT user FROM `Users`WHERE Username='{$friendusername}'");
-                               while($row = $friendidres->fetch_assoc())
+                              $friendidres = $dB->sqli()->query("SELECT user FROM  `users` WHERE Username='{$friendusername}'");
+                                 while($row = $friendidres->fetch_assoc())
                               {
                                  $friendid = $row['user'];
                               }
-                              $friendidress = $dB->sqli()->query("SELECT user FROM `Users`WHERE Username='{$_SESSION['username']}'");
-                               while($row = $friendidress->fetch_assoc())
+                              $friendidress = $dB->sqli()->query("SELECT user FROM  `users` WHERE Username='{$_SESSION['username']}'");
+                                 while($row = $friendidress->fetch_assoc())
                               {
                                  $userid = $row['user'];
                               }
