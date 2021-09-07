@@ -23,7 +23,7 @@ if($password1===$password2&&isset($_POST['Username'])&&filter_var($_POST['Email'
     	echo "right";
         $s = $db->send($db->getConnection());
         $db->sendSql(
-            "CREATE TABLE {$_POST['Username']}Files (
+            "CREATE TABLE {$_POST['Username']}files (
             FileId int AUTO_INCREMENT,
             FileData LONGBLOB,
             TheFileName varchar(255),
