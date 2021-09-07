@@ -101,7 +101,7 @@
     <!-- From here  -->
 
     <div class="middle" >
-      <h1>Send to your friends now!</h1>
+      <h1 >Send to your friends now!</h1>
       </div>
     </div>
 

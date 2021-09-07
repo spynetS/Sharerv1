@@ -75,7 +75,7 @@
          <div class="middle" >
             <form action="../PHP/SendFiles.php" enctype="multipart/form-data" method="POST">
                <div class="dropdown" style="margin: 10px;" >
-                  <h2>Send to</h2>
+                  <h1>Send to</h1>
                   <button value="SelectFriend" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                      <input id="FriendChooser" name="chooser" type="text" style="background: rgb(0,0,0,0); border:none; color: white;" value="Select friend" readonly></button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -113,7 +113,7 @@
                         ?>
                   </ul>
                </div>
-               <h2>Select file</h2>
+               <h1>Select file</h1>
                <input type="file" name="image" class="btn-primary" >
                <div style="height: 10px;" ></div>
                <input style="margin: 10px;"  type="submit" name="submit" class="btn btn-primary" value="Send">
