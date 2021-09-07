@@ -11,9 +11,19 @@ class User
     {
         $this->username = $username_;
     }
-    public function getUserName()
+    public function getUserName($_userid)
     {
-        
+        $this->userid = $_userid;
+        $db = new DataBase();
+        $result = $dbb->sqli()->query("SELECT Username FROM  `users` WHERE user='{$_userid}'"); 
+        //
+       while($row = $result->fetch_assoc())
+       {
+            $Username = $row['Username'];
+            echo $Username;
+            $username = $Username;
+        }
+       return $Username;
     }
     public function getUserProfilePicture()
     {
