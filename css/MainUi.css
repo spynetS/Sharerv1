@@ -8,34 +8,17 @@ body{
    
     background-size: cover;
 }
-h1{
-    color : rgb(216, 216, 216)
-}
-h5{
-    color : rgb(216, 216, 216)
-}
-input{
-    color : rgb(216, 216, 216)
-}
-a{
-    color : rgb(216, 216, 216)
-}
-th{
-    color : rgb(216, 216, 216)
-}
-td{
-    color : rgb(216, 216, 216)
-}
+
 .topbar
 {
-    background-color: rgba(117, 117, 117, 0.199); 
-    width: 100%; 
+    background-color: rgba(250,250,255,0.85); 
+    width: 100%;  
     height: 70px;
 }
 
 .sidebarText
 {
-    color: white;
+    color: black;
     text-decoration:none;
     font-size: large;
 }
@@ -43,7 +26,7 @@ td{
 {
     transition: width 0.3s ease-in-out; 
     position: fixed;
-    background-color: rgba(95, 95, 95, 0.89); 
+    background-color: rgba(255,255,255,1); 
     height: 100%;
     width: 0px;
     margin-left: -300px;
@@ -55,12 +38,12 @@ td{
     bottom: 0;
     height: 120px;
     width: 100%;
-    background-color: rgba(33, 72, 102, 0.822);
+    background-color: rgba(75, 144, 194, 0.72);
 }
 .header
 {
     position: fixed;
-    background-color: rgba(110, 110, 110, 0.76);
+    background-color: rgba(250,250,255,0.5);
     margin-top: 0px; 
     width: 100%; 
     height: 70px;
