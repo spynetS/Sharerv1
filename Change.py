@@ -26,9 +26,12 @@ for filename in os.listdir(directory):
             is_changed = False
             for change in to_change:
                 if change in line: 
-                    print("new line "+GetNewLine(line))
+                    newText+=(GetNewLine(line))
                     is_changed = True
             if is_changed==False:
-                print(line)
+                newText+=(line)
+        fwr = open(os.path.join(directory, filename),"w")
+        fwr.write(newText)
+        fwr.close()
     else:
         continue
