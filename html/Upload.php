@@ -74,7 +74,7 @@
       </div>
         
         <div class="middle">
-          <form action="../PHP/SendFiles.php" enctype="multipart/form-data" method="POST">
+          <form action="../PHP/UploadFiles.php" enctype="multipart/form-data" method="POST">
             <h1>Upload a photo</h1>
                 <input type="file" name="image" class="btn-primary" ><div style="height: 10px;" ></div>
             <input type="submit" name="submit" class="btn btn-primary" value="Upload">
