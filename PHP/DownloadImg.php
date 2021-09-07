@@ -35,4 +35,5 @@ else if(array_key_exists('Delete', $_POST)){
     echo " DELETE FROM `{$_SESSION['username']}files` WHERE FileId={$_POST['id']}";
     $result = $dbb->sqli()->query("DELETE FROM `{$_SESSION['username']}files` WHERE FileId={$_POST['id']}");
     echo $result;
+    exit();
 }
