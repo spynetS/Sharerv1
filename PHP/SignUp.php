@@ -15,9 +15,9 @@ $sd = new utils();
 if($password1===$password2&&isset($_POST['Username'])&&filter_var($_POST['Email'], FILTER_VALIDATE_EMAIL))
 {
     echo "filled";
-    $EmailResult = $db->sqli()->query("SELECT * FROM Users WHERE Email ='{$_POST['Email']}'");
-    $UsernameResult = $db->sqli()->query("SELECT * FROM Users WHERE Username ='{$_POST['Username']}'");
-
+    $EmailResult = $db->sqli()->query("SELECT * FROM  users WHERE Email ='{$_POST['Email']}'");
+     $UsernameResult = $db->sqli()->query("SELECT * FROM  users WHERE Username ='{$_POST['Username']}'");
+ 
     if(mysqli_fetch_array($UsernameResult)['Username']!=$_POST['Username'] && mysqli_fetch_array($EmailResult)['Email']!=$_POST['Email'])
     {
     	echo "right";

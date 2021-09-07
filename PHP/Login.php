@@ -14,9 +14,9 @@ $ut = new utils();
 $UserNameEmail = $_POST['username'];
 $password = $_POST['password'];
 
-$EmailResult = $db->get("SELECT * FROM Users WHERE Email ='{$_POST['username']}'");
-$UsernameResult = $db->get("SELECT * FROM Users WHERE Username ='{$_POST['username']}'");
-$password1 = "";
+$EmailResult = $db->get("SELECT * FROM  users WHERE Email ='{$_POST['username']}'");
+ $UsernameResult = $db->get("SELECT * FROM  users WHERE Username ='{$_POST['username']}'");
+ $password1 = "";
 $username = "";
 $email = "";
 //if user login in with email
@@ -35,8 +35,8 @@ while($row = mysqli_fetch_array($UsernameResult))
 //checks if email is correct with the password passed in
 if(($email==$UserNameEmail&&password_verify($password,$password1)))
 {
-    $result = $db->get("SELECT * FROM Users WHERE Email ='{$_POST['username']}'");
-    
+    $result = $db->get("SELECT * FROM  users WHERE Email ='{$_POST['username']}'");
+     
     $_SESSION['username'] = mysqli_fetch_array($result)['Username'];
     //rememberme($result);
     $ut->setPage('/Sharer/html/home.php');
@@ -49,8 +49,8 @@ if(($email==$UserNameEmail&&password_verify($password,$password1)))
 
 else if($username==$UserNameEmail&&password_verify($password,$password1))
 {
-    $result = $db->get("SELECT * FROM Users WHERE Username ='{$_POST['username']}'");
-    $_SESSION['username'] = $_POST['username'];
+    $result = $db->get("SELECT * FROM  users WHERE Username ='{$_POST['username']}'");
+     $_SESSION['username'] = $_POST['username'];
     //rememberme($result);
     $sd = new utils();
     $sd->setPage('/Sharer/html/Home.php');
