@@ -11,7 +11,7 @@ def GetNewLine(line):
             if word == "Users":
                 new_line += " users "
             elif word=="`Users`":
-                new_line += " `user` "
+                new_line += " `users` "
             else:
                 new_line+= word+" "
     return new_line

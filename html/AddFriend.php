@@ -54,8 +54,8 @@
             <img style="width:50px;height: 50px;" src="<?php
                include_once('../PHP/DataBase.php');
                $db = new DataBase();
-               $result = $db->get("SELECT profilepicture FROM Users WHERE Username='"."{$_SESSION['username']}"."'");
-               
+               $result = $db->get("SELECT profilepicture FROM  users WHERE Username='"."{$_SESSION['username']}"."'");
+                
                echo '../Resorces/Images/HappyPeople2.png'
                
                ?>" alt="">
@@ -95,8 +95,8 @@
                         include_once('../PHP/DataBase.php');
                         include_once('../PHP/User.php');
                         $dB = new DataBase();
-                        $userfriendsresult = $dB->sqli()->query("SELECT * FROM `Users` WHERE 1");
-                        while($row = $userfriendsresult->fetch_assoc())
+                        $userfriendsresult = $dB->sqli()->query("SELECT * FROM  `users` WHERE 1");
+                         while($row = $userfriendsresult->fetch_assoc())
                         {
                           if(!isset($_POST['Search']))
                           {
@@ -150,12 +150,12 @@
                               $dB = new DataBase();
                               $friendusername = $_POST['friendusername'];
                               $friendidres = $dB->sqli()->query("SELECT user FROM `Users`WHERE Username='{$friendusername}'");
-                              while($row = $friendidres->fetch_assoc())
+                               while($row = $friendidres->fetch_assoc())
                               {
                                  $friendid = $row['user'];
                               }
                               $friendidress = $dB->sqli()->query("SELECT user FROM `Users`WHERE Username='{$_SESSION['username']}'");
-                              while($row = $friendidress->fetch_assoc())
+                               while($row = $friendidress->fetch_assoc())
                               {
                                  $userid = $row['user'];
                               }

@@ -66,8 +66,8 @@
              $dbb = new DataBase();                      
              // Get image data from database 
  
-             $result = $dbb->sqli()->query("SELECT ProfilePicture FROM `Users` WHERE Username='{$_SESSION['username']}'"); 
-             //
+             $result = $dbb->sqli()->query("SELECT ProfilePicture FROM  `users` WHERE Username='{$_SESSION['username']}'"); 
+              //
              while($row = $result->fetch_assoc())
              {
                if(empty($row['ProfilePicture']))

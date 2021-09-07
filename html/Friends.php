@@ -62,8 +62,8 @@
       
       include('../PHP/DataBase.php');
       $db = new DataBase();
-      $result = $db->get("SELECT profilepicture FROM Users WHERE Username='"."{$_SESSION['username']}"."'");
-
+      $result = $db->get("SELECT profilepicture FROM  users WHERE Username='"."{$_SESSION['username']}"."'");
+ 
       echo '../Resorces/Images/HappyPeople2.png'
       
       ?>" alt="">
@@ -106,8 +106,8 @@
               while($row = $userfriendsresult->fetch_assoc())
               {
                   echo '<tr><th scope="row">1</th>';
-                  $result = $dB->sqli()->query("SELECT * FROM `Users` WHERE user={$row['FriendUserid']}");
-                  while($user = $result->fetch_assoc())
+                  $result = $dB->sqli()->query("SELECT * FROM  `users` WHERE user={$row['FriendUserid']}");
+                   while($user = $result->fetch_assoc())
                   {
                       $Myuser = new User();
                       $Myuser->setUsername($user['Username']);
