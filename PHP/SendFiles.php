@@ -72,7 +72,7 @@ if(isset($_POST['chooser']))
     }
     else{echo "no file";}
     $d = new utils();
-   //$d->setPage("/Sharer/html/Friends.php");
+   $d->setPage("/Sharer/html/Friends.php");
 
 }
 else
