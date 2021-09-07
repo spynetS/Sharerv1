@@ -56,7 +56,7 @@ else if($username==$UserNameEmail&&password_verify($password,$password1))
     $sd->setPage('/Sharer/html/Home.php');
 }
 else{
-	echo "some wrong";
+	echo "Wrong password or username/email!";
 }
 
 function rememberme($result)
