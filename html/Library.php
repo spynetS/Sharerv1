@@ -99,10 +99,12 @@
                     <?php
                       //require_once '../PHP/dbConfig.php'; 
                       require_once('../PHP/DataBase.php');
+                      require_once('../PHP/User.php');
+                      $userid = getUserId($_SESSION['username']);
                       $dbb = new DataBase();                      
                       // Get image data from database 
 
-                      $result = $dbb->sqli()->query("SELECT * FROM `{$_SESSION['username']}files` WHERE 1"); 
+                      $result = $dbb->sqli()->query("SELECT * FROM `{$userid}files` WHERE 1"); 
 
                     ?>
                       

@@ -86,8 +86,9 @@
                         include_once('../PHP/DataBase.php');
                         require_once('../PHP/User.php');
                         
+                        $userid = getUserId($_SESSION['username']);
                         $dB = new DataBase();   
-                        $userfriendsresult = $dB->sqli()->query("SELECT * FROM `{$_SESSION['username']}friends` WHERE FriendRequest=0");
+                        $userfriendsresult = $dB->sqli()->query("SELECT * FROM `{$userid}friends` WHERE FriendRequest=0");
                         while($row = $userfriendsresult->fetch_assoc())
                         {
                           $result = $dB->sqli()->query("SELECT * FROM  `users` WHERE user={$row['FriendUserid']}");

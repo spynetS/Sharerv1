@@ -4,6 +4,7 @@ session_start();
 
 include('DataBase.php');
 require_once('Utilitis.php');
+require_once('User.php');
 
 $db = new DataBase(); 
 $statusMsg = " some wrong";      
@@ -17,7 +18,9 @@ function CanUpload($filesize)
 	echo $_SESSION['username'];
     $returnvalue = false;
     $usersize = mysqli_fetch_array($dbbb->sqli()->query("SELECT LibrarySize FROM users WHERE Username='{$_SESSION['username']}'"))['LibrarySize'];
-    $files = ($dbbb->sqli()->query("SELECT FileSize FROM `{$_SESSION['username']}files` WHERE 1 "));
+    $userid = getUserId($_SESSION['username']);
+
+    $files = ($dbbb->sqli()->query("SELECT FileSize FROM `{$userid}files` WHERE 1 "));
     $filesOccupation= 0;
     if($files){
 	    while($row = mysqli_fetch_array($files))
@@ -49,8 +52,8 @@ if(!empty($_FILES["image"]["name"])) {
         $imgContent = addslashes(file_get_contents($image)); 
         $FileSize = $FileSize;
         // Insert image content into database 
-      
-        $insert = $db->sqli()->query("INSERT INTO `{$_SESSION['username']}files`(`FileData`, `TheFileName`,`FileSize`,`UploadDate`) VALUES ('$imgContent','{$fileName}','{$FileSize}',Now())"); 
+        $userid = getUserId($_SESSION['username']);
+        $insert = $db->sqli()->query("INSERT INTO `{$userid}files`(`FileData`, `TheFileName`,`FileSize`,`UploadDate`) VALUES ('$imgContent','{$fileName}','{$FileSize}',Now())"); 
          
         if($insert){ 
             $status = 'success'; 

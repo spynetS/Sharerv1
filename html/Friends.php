@@ -100,10 +100,12 @@
               <?php
               //Search for the users friends
               include_once('../PHP/DataBase.php');
-              include_once('../PHP/User.php');
+              require_once('../PHP/User.php');
 
-              $dB = new DataBase();   
-              $userfriendsresult = $dB->sqli()->query("SELECT * FROM `{$_SESSION['username']}friends` WHERE FriendRequest=0");
+              $dB = new DataBase();
+              $userid = getUserId($_SESSION['username']);
+              echo $userid;
+              $userfriendsresult = $dB->sqli()->query("SELECT * FROM `{$userid}friends` WHERE FriendRequest=0");
               while($row = $userfriendsresult->fetch_assoc())
               {
                   echo '<tr><th scope="row">1</th>';

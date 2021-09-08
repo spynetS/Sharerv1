@@ -162,8 +162,8 @@
                                  $userid = $row['user'];
                               }
                               echo $userid;
-                              $or = $dB->sqli()->query("INSERT INTO `{$friendusername}friends`(`FriendUserid`, `FriendRequest`) VALUES ('{$userid}','1')");
-                              $r = $dB->sqli()->query("INSERT INTO `{$_SESSION['username']}friends`(`FriendUserid`, `FriendRequest`) VALUES ('{$friendid}','0')");
+                              $or = $dB->sqli()->query("INSERT INTO `{$friendid}friends`(`FriendUserid`, `FriendRequest`) VALUES ('{$userid}','1')");
+                              $r = $dB->sqli()->query("INSERT INTO `{$userid}friends`(`FriendUserid`, `FriendRequest`) VALUES ('{$friendid}','0')");
 
                            }
                         }
