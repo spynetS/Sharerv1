@@ -116,7 +116,7 @@
                       $Myuser->setUsername($user['Username']);
                       echo "<td><img name='img' style='width: 40px; height: 40px;' src='{$Myuser->getUserProfilePicture()}' /></td> \n";
                       echo "<td>{$user['Username']}</td>\n";
-                      echo '<form action="Send.php" method="POST" ><td><input type="submit" name="'.$user['Username'].'"class="btn btn-primary" ></button><button class="btn btn-danger" >Remove friend</button></td></tr></form>';
+                      echo '<form action="Send.php" method="POST" ><td><input type="submit" name="'.$user['Username'].'"class="btn btn-primary" ></button><button class="btn btn-danger"  disabled>Remove friend</button></td></tr></form>';
                   }
               }
             ?>

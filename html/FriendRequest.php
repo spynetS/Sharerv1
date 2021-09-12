@@ -115,7 +115,7 @@
                       $Myuser = new User();
                       $Myuser->setUsername($user['Username']);
                       echo "<form action='FriendRequest.php' method='POST' ><td><img name='img' style='width: 40px; height: 40px;' src='{$Myuser->getUserProfilePicture()}' /></td> \n";
-                      echo "<td><input type='text' class='indexInputHidden' readonly='readonly' name='FriendUsername' value='{$user['Username']}' ></td>\n";
+                      echo "<td><input type='text' class='indexInputHidden' readonly='readonly' style='color : rgb(216, 216, 216);' name='FriendUsername' value='{$user['Username']}' ></td>\n";
                       echo '<td><input type="submit" name="Accept" value="Accept" class="btn btn-primary" ><input class="btn btn-danger" type="submit" name="Decline" value="Decline" ></td></form></tr>';
                   }
               }
@@ -130,13 +130,15 @@
                     require_once("../PHP/User.php");
                     $userid = getUserId($_SESSION['username']);
                     if(isset($_POST['FriendUsername'])){
-                        $dB = new DataBase();
-                        $friendidrs =$dB->sqli()->query("SELECT * FROM  `users` WHERE Username='{$_POST['FriendUsername']}' ");
-                         while($row = $friendidrs->fetch_assoc())
-                        {
-                            $friendid = $row['user'];
-                        }
-                        $res = $dB->sqli()->query("UPDATE `{$userid}friends` SET `FriendRequest`='0' WHERE FriendUserid = '{$friendid}'");
+						$dB = new DataBase();
+						$friendidrs =$dB->sqli()->query("SELECT * FROM  `users` WHERE Username='{$_POST['FriendUsername']}' ");
+							while($row = $friendidrs->fetch_assoc())
+						{
+							$friendid = $row['user'];
+						}
+						$res = $dB->sqli()->query("UPDATE `{$userid}friends` SET `FriendRequest`='0' WHERE FriendUserid = '{$friendid}'");
+						$d = new utils();
+						$d->setPage("/Sharer/html/FriendRequest.php");
                     }
                 }
                 function Decline() {
@@ -160,7 +162,9 @@
                         $friednuserid = getUserId($_POST['FriendUsername']);
                         echo $_POST['FriendUsername'];
                         $friendRem = $dB->sqli()->query("DELETE FROM `{$friednuserid}friends` WHERE FriendUserid='{$userid}' ");
-                    }
+						$d = new utils();
+						$d->setPage("/Sharer/html/FriendRequest.php");
+					}
                 }
             ?>
               </tbody>            
