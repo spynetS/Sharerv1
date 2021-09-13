@@ -115,7 +115,34 @@
                             <tr>    
                               <form action="../PHP/DownloadImg.php" method="post" >
                                 <th scope="row"><input type="text" class="indexInputHidden" readonly="readonly" name="id" value="<?php echo $row['FileId'];?>" ></th>
-                                <td><img name="img" style="width: 40px; height: 40px;" src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['FileData']); ?>" /></td>
+                                
+								<?php
+
+									
+									$images = array("jpg","png","jpeg","gif");
+									$wasimage = false;
+									foreach($images as &$image)
+									{
+										if(pathinfo($row['TheFileName'], PATHINFO_EXTENSION)==$image)
+										{
+											$wasimage = true;
+											break;
+										}
+										else
+										{
+											$wasimage = false;
+										}																	
+									}
+									if($wasimage==true)
+									{
+										echo "<td><img name='img' style='width: 40px; height: 40px;' src='data:image/jpg;charset=utf8;base64,";
+										echo base64_encode($row['FileData'])."'"."/></td>";		
+									}
+									else{
+										echo "<td><img name='img' style='width: 40px; height: 40px;' src=''/></td>";
+									}
+
+                                ?>
                                 <td><?php echo $row['TheFileName']; ?></td>
                                 <td><?php echo $row['FileSize']/1000000; ?></td>
                                 <td><?php echo $row['UploadDate']; ?></td>
@@ -130,10 +157,7 @@
                       <?php }else{ ?> 
                           <p class="status error">Image(s) not found...</p> 
                       <?php }
-                    
                     ?>
-                     
-                     
                   </tbody>            
                 </table>
 
