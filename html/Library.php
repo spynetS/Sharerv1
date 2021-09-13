@@ -41,10 +41,10 @@
     <div id="Menu" onmouseleave="showMenu()" class="sidebar col" >
     
     <div class="row" style="text-align: right; margin-right: 20px; margin-top: 100px; " >
-    <a onmousedown="navigate(this);" id="Home" class="sidebarText" style="margin-top: 20px;" >Home</a><hr>
+      <a onmousedown="navigate(this);" id="Home" class="sidebarText" style="margin-top: 20px;" >Home</a><hr>
         <a onmousedown="navigate(this);" id="Upload" class="sidebarText" style="margin-top: 20px;" >Upload</a><hr>
         <a onmousedown="navigate(this);" id="Send" class="sidebarText" style="margin-top: 20px;" >Send</a><hr>
-<a onmousedown="navigate(this);" id="Library" class="sidebarText" style="margin-top: 20px;" >Library</a><hr>
+        <a onmousedown="navigate(this);" id="Library" class="sidebarText" style="margin-top: 20px;" >Library</a><hr>
         <a onmousedown="navigate(this);" id="Friends" class="sidebarText" style="margin-top: 20px;" >Friends</a>
         <a onmousedown="navigate(this);" id="index" class="sidebarText" style="margin-top: 20px; bottom: 120px; position: absolute; " >Logout</a><hr>
         <script>
@@ -99,10 +99,12 @@
                     <?php
                       //require_once '../PHP/dbConfig.php'; 
                       require_once('../PHP/DataBase.php');
+                      require_once('../PHP/User.php');
+                      $userid = getUserId($_SESSION['username']);
                       $dbb = new DataBase();                      
                       // Get image data from database 
 
-                      $result = $dbb->sqli()->query("SELECT * FROM `{$_SESSION['username']}files` WHERE 1"); 
+                      $result = $dbb->sqli()->query("SELECT * FROM `{$userid}files` WHERE 1"); 
 
                     ?>
                       
@@ -117,7 +119,7 @@
                                 <td><?php echo $row['TheFileName']; ?></td>
                                 <td><?php echo $row['FileSize']/1000000; ?></td>
                                 <td><?php echo $row['UploadDate']; ?></td>
-                                <td><input type="Submit" value="Download" class="btn btn-primary" ><button class="btn btn-primary" >Send</button><button class="btn btn-danger" >Delete</button></td>
+                                <td><input type="Submit" name="Submit" value="Download" class="btn btn-primary" ><a href="Send.php?name=homo"><button class="btn btn-primary" disabled>Send</button></a><input name="Delete" type="submit" value="Delete" class="btn btn-danger" ></button></td>
                                 <td></td>
                               </form>
 

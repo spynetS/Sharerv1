@@ -100,10 +100,12 @@
               <?php
               //Search for the users friends
               include_once('../PHP/DataBase.php');
-              include_once('../PHP/User.php');
+              require_once('../PHP/User.php');
 
-              $dB = new DataBase();   
-              $userfriendsresult = $dB->sqli()->query("SELECT * FROM `{$_SESSION['username']}friends` WHERE FriendRequest=0");
+              $dB = new DataBase();
+              $userid = getUserId($_SESSION['username']);
+              echo $userid;
+              $userfriendsresult = $dB->sqli()->query("SELECT * FROM `{$userid}friends` WHERE FriendRequest=0");
               while($row = $userfriendsresult->fetch_assoc())
               {
                   echo '<tr><th scope="row">1</th>';
@@ -114,7 +116,7 @@
                       $Myuser->setUsername($user['Username']);
                       echo "<td><img name='img' style='width: 40px; height: 40px;' src='{$Myuser->getUserProfilePicture()}' /></td> \n";
                       echo "<td>{$user['Username']}</td>\n";
-                      echo '<form action="Send.php" method="POST" ><td><input type="submit" name="'.$user['Username'].'"class="btn btn-primary" ></button><button class="btn btn-danger" >Remove friend</button></td></tr></form>';
+                      echo '<form action="Send.php" method="POST" ><td><input type="submit" name="'.$user['Username'].'"class="btn btn-primary" ></button><button class="btn btn-danger"  disabled>Remove friend</button></td></tr></form>';
                   }
               }
             ?>

@@ -17,11 +17,14 @@ if(isset($_POST['chooser']))
 
     function CanUpload($filesize)
     {
+        require_once("User.php");
         $dbbb = new DataBase(); 
         $username = $_POST['chooser'];
         $returnvalue = false;
         $usersize = mysqli_fetch_array($dbbb->sqli()->query("SELECT LibrarySize FROM users WHERE Username='{$username}'"))['LibrarySize'];
-        $files = ($dbbb->sqli()->query("SELECT FileSize FROM `{$username}files` WHERE 1 "));
+        require_once('User.php');
+        $userid = getUserId($username);
+        $files = ($dbbb->sqli()->query("SELECT FileSize FROM `{$userid}files` WHERE 1 "));
         $filesOccupation= 0;
         if($files){
             while($row = mysqli_fetch_array($files))
@@ -51,13 +54,15 @@ if(isset($_POST['chooser']))
 
         if(CanUpload($FileSize)==true)
         { 
+            require_once("User.php");
             $image = $_FILES['image']['tmp_name']; 
             $imgContent = addslashes(file_get_contents($image)); 
             $FileSize = $FileSize;
             // Insert image content into database 
             $username = $_POST['chooser'];
             echo " Username ".$username;
-            $insert = $db->sqli()->query("INSERT INTO `{$username}files`(`FileData`, `TheFileName`,`FileSize`,`UploadDate`) VALUES ('$imgContent','{$fileName}','{$FileSize}',Now())"); 
+            $userid = getUserId($username);
+            $insert = $db->sqli()->query("INSERT INTO `{$userid}files`(`FileData`, `TheFileName`,`FileSize`,`UploadDate`) VALUES ('$imgContent','{$fileName}','{$FileSize}',Now())"); 
             
             if($insert){ 
                 $status = 'success'; 
