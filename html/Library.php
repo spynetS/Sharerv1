@@ -142,18 +142,18 @@
 										echo "<td><img name='img' style='width: 40px; height: 40px;' src=''/></td>";
 									}
 
-                                ?>
-                                <td><?php echo $row['TheFileName']; ?></td>
-                                <td><?php echo $row['FileSize']/1000000; ?></td>
-                                <td><?php echo $row['UploadDate']; ?></td>
-                                <td><input type="Submit" name="Submit" value="Download" class="btn btn-primary" ><a href="Send.php?name=homo"><button class="btn btn-primary" disabled>Send</button></a><input name="Delete" type="submit" value="Delete" class="btn btn-danger" ></button></td>
-                                <td></td>
-                              </form>
+                    ?>
+                    <td><?php echo $row['TheFileName']; ?></td>
+                    <td><?php echo $row['FileSize']/1000000; ?></td>
+                    <td><?php echo $row['UploadDate']; ?></td>
+                    <td><input type="Submit" name="Submit" value="Download" class="btn btn-primary" ><a href="Send.php?name=homo"><button class="btn btn-primary" disabled>Send</button></a><input name="Delete" type="submit" value="Delete" class="btn btn-danger" ></button></td>
+                    <td></td>
+                  </form>
 
-                              </tr>
+                  </tr>
 
-                                  <?php } ?> 
-                          </div> 
+                      <?php } ?> 
+                    </div> 
                       <?php }else{ ?> 
                           <p class="status error">Image(s) not found...</p> 
                       <?php }
