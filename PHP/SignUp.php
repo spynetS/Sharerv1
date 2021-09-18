@@ -12,7 +12,7 @@ $password2 = $_POST['password1'];
 $db = new DataBase();
 $sd = new utils();
 
-if($password1===$password2&&isset($_POST['Username'])&&filter_var($_POST['Email'], FILTER_VALIDATE_EMAIL))
+if($password1===$password2&&isset($_POST['Username']))
 {
     echo "filled";
     $EmailResult = $db->sqli()->query("SELECT * FROM  users WHERE Email ='{$_POST['Email']}'");
@@ -22,23 +22,29 @@ if($password1===$password2&&isset($_POST['Username'])&&filter_var($_POST['Email'
     {
     	echo "right";
         $s = $db->send($db->getConnection());
-        $db->sendSql(
-            "CREATE TABLE {$_POST['Username']}files (
-            FileId int AUTO_INCREMENT,
-            FileData LONGBLOB,
-            TheFileName varchar(255),
-            FileSize int(255),
-            UploadDate datetime,
-            PRIMARY KEY (FileId)
-        );");
-
-        $db->sqli()->query(
-            "CREATE TABLE {$_POST['Username']}friends (
-            friendid int AUTO_INCREMENT,
-            FriendUserid int(255),
-            FriendRequest int(255),
-            PRIMARY KEY (friendid)
-        );");
+        $result = $db->sqli()->query("SELECT user FROM `users` WHERE Username='{$_POST['Username']}'");
+        while($row = mysqli_fetch_array($result))
+        {
+            echo "\n".$row['user'];
+            $db->sendSql(
+                "CREATE TABLE {$row['user']}files (
+                FileId int AUTO_INCREMENT,
+                FileData LONGBLOB,
+                TheFileName varchar(255),
+                FileSize int(255),
+                UploadDate datetime,
+                PRIMARY KEY (FileId)
+            );");
+    
+            $db->sqli()->query(
+                "CREATE TABLE {$row['user']}friends (
+                friendid int AUTO_INCREMENT,
+                FriendUserid int(255),
+                FriendRequest int(255),
+                PRIMARY KEY (friendid)
+            );");
+        }
+        
         $sd->setPage('/Sharer/html/index.php');    
     }
     else
@@ -49,6 +55,7 @@ if($password1===$password2&&isset($_POST['Username'])&&filter_var($_POST['Email'
 }
 else
 {
+    echo "write something";
     //$sd->setPage('/Sharer/html/index.php');    
 }
 

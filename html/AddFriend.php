@@ -36,6 +36,8 @@
          <div class="row" style="text-align: right; margin-right: 20px; margin-top: 100px; " >
          <a onmousedown="navigate(this);" id="Home" class="sidebarText" style="margin-top: 20px;" >Home</a><hr>
         <a onmousedown="navigate(this);" id="Upload" class="sidebarText" style="margin-top: 20px;" >Upload</a><hr>
+        <a onmousedown="navigate(this);" id="Send" class="sidebarText" style="margin-top: 20px;" >Send</a><hr>
+
         <a onmousedown="navigate(this);" id="Library" class="sidebarText" style="margin-top: 20px;" >Library</a><hr>
         <a onmousedown="navigate(this);" id="Friends" class="sidebarText" style="margin-top: 20px;" >Friends</a>
         <a onmousedown="navigate(this);" id="index" class="sidebarText" style="margin-top: 20px; bottom: 120px; position: absolute; " >Logout</a><hr>
@@ -109,7 +111,7 @@
                                  $Myuser = new User();
                                  $Myuser->setUsername($row['Username']);
                                  echo "<td><img name='img' style='width: 40px; height: 40px;' src='{$Myuser->getUserProfilePicture()}' /></td> \n";
-                                 echo "<td><input type='text' class='indexInputHidden' readonly='readonly' name='friendusername' value='{$row['Username']}' ></td>\n";
+                                 echo "<td><input type='text' class='indexInputHidden' style='color : rgb(216, 216, 216);' readonly='readonly' name='friendusername' value='{$row['Username']}' ></td>\n";
                                  echo '<td><input class="btn btn-primary" type="submit" value="Add" >';
                                  echo "</tr>\n</form>";
                               }
@@ -120,28 +122,46 @@
                             if(str_contains($row['Username'],$_POST['Search']))
                             {
                               echo "<form  action='AddFriend.php' method='POST'><tr>\n";
-                                 echo '<th scope="row">1</th>';
-                                 $Myuser = new User();
-                                 $Myuser->setUsername($row['Username']);
-                                 echo "<td><img name='img' style='width: 40px; height: 40px;' src='{$Myuser->getUserProfilePicture()}' /></td> \n";
-                                 echo "<td><input type='text' class='indexInputHidden' readonly='readonly' name='friendusername' value='{$row['Username']}' ></td>\n";
-                                 echo '<td><input class="btn btn-primary" type="submit" value="Add" >';
-                                 echo "</tr>\n</form>";
+                              echo '<th scope="row">1</th>';
+                              $Myuser = new User();
+                              $Myuser->setUsername($row['Username']);
+                              echo "<td><img name='img' style='width: 40px; height: 40px;' src='{$Myuser->getUserProfilePicture()}' /></td> \n";
+                              echo "<td><input type='text' class='indexInputHidden' style='color : rgb(216, 216, 216);' readonly='readonly' name='friendusername' value='{$row['Username']}' ></td>\n";
+                              echo '<td><input class="btn btn-primary" type="submit" value="Add" >';
+                              echo "</tr>\n</form>";
                             }
                           }
                           else
                           {
-                           echo "<form  action='AddFriend.php' method='POST'><tr>\n";
-                                 echo '<th scope="row">1</th>';
-                                 $Myuser = new User();
-                                 $Myuser->setUsername($row['Username']);
-                                 echo "<td><img name='img' style='width: 40px; height: 40px;' src='{$Myuser->getUserProfilePicture()}' /></td> \n";
-                                 echo "<td><input type='text' class='indexInputHidden' readonly='readonly' name='friendusername' value='{$row['Username']}' ></td>\n";
-                                 echo '<td><input class="btn btn-primary" type="submit" value="Add" >';
-                                 echo "</tr>\n</form>";
+                              echo "<form  action='AddFriend.php' method='POST'><tr>\n";
+                              echo '<th scope="row">1</th>';
+                              $Myuser = new User();
+                              $Myuser->setUsername($row['Username']);
+                              echo "<td><img name='img' style='width: 40px; height: 40px;' src='{$Myuser->getUserProfilePicture()}' /></td> \n";
+                              echo "<td><input type='text' class='indexInputHidden' style='color : rgb(216, 216, 216);' readonly='readonly' name='friendusername' value='{$row['Username']}' ></td>\n";
+                              echo '<td><input class="btn btn-primary" type="submit" value="Add" >';
+                              echo "</tr>\n</form>";
                           }
                         }
-                        addFriend();
+                        if(isset($_POST['friendusername']))
+                        {
+                           $friendid = getUserId($_POST['friendusername']);
+                           $userid = getUserId($_SESSION['username']);
+                           $friendresult = $dB->sqli()->query("SELECT * FROM  `{$userid}friends` WHERE 1");
+                           $hasAdded = false;
+                           while($row = $friendresult->fetch_assoc())
+                           {
+                              if($friendid == $row['FriendUserid'])
+                              {
+                                 $hasAdded = true;
+                              }
+                           } 
+                           if($hasAdded == false)
+                           {
+                              addFriend();
+                           }
+
+                        }
                         function addFriend()
                         {
                            //We need to get the userid from the friendusername and save it to our userfriends
@@ -150,18 +170,18 @@
                               $dB = new DataBase();
                               $friendusername = $_POST['friendusername'];
                               $friendidres = $dB->sqli()->query("SELECT user FROM  `users` WHERE Username='{$friendusername}'");
-                                 while($row = $friendidres->fetch_assoc())
+                              while($row = $friendidres->fetch_assoc())
                               {
                                  $friendid = $row['user'];
                               }
                               $friendidress = $dB->sqli()->query("SELECT user FROM  `users` WHERE Username='{$_SESSION['username']}'");
-                                 while($row = $friendidress->fetch_assoc())
+                              while($row = $friendidress->fetch_assoc())
                               {
                                  $userid = $row['user'];
                               }
                               echo $userid;
-                              $or = $dB->sqli()->query("INSERT INTO `{$friendusername}friends`(`FriendUserid`, `FriendRequest`) VALUES ('{$userid}','1')");
-                              $r = $dB->sqli()->query("INSERT INTO `{$_SESSION['username']}friends`(`FriendUserid`, `FriendRequest`) VALUES ('{$friendid}','0')");
+                              $or = $dB->sqli()->query("INSERT INTO `{$friendid}friends`(`FriendUserid`, `FriendRequest`) VALUES ('{$userid}','1')");
+                              $r = $dB->sqli()->query("INSERT INTO `{$userid}friends`(`FriendUserid`, `FriendRequest`) VALUES ('{$friendid}','0')");
 
                            }
                         }

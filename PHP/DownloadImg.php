@@ -1,12 +1,16 @@
 <?php
- 
-// Include the database configuration file  
+
 include('DataBase.php');
+include('User.php');
 $dbb = new DataBase();
-// Get image data from database 
 session_start();
+
+
+// Include the database configuration file  
+// Get image data from database 
 $id = $_POST['id'];
-$sql = "SELECT * FROM `{$_SESSION['username']}files` WHERE FileId ='{$id}'"; // 1
+$userid = getUserId($_SESSION['username']);
+$sql = "SELECT * FROM `{$userid}files` WHERE FileId ='{$id}'"; // 1
 $res = $dbb->sqli()->query($sql);
 while($row = $res->fetch_assoc())
 { 
@@ -24,3 +28,4 @@ header("Content-Length: ".$size);
 
 echo $image;
 exit();
+

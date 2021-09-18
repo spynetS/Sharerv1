@@ -43,7 +43,8 @@
       <div class="row" style="text-align: right; margin-right: 20px; margin-top: 100px; " >
       <a onmousedown="navigate(this);" id="Home" class="sidebarText" style="margin-top: 20px;" >Home</a><hr>
         <a onmousedown="navigate(this);" id="Upload" class="sidebarText" style="margin-top: 20px;" >Upload</a><hr>
-        <a onmousedown="navigate(this);" id="Library" class="sidebarText" style="margin-top: 20px;" >Library</a><hr>
+        <a onmousedown="navigate(this);" id="Send" class="sidebarText" style="margin-top: 20px;" >Send</a><hr>
+<a onmousedown="navigate(this);" id="Library" class="sidebarText" style="margin-top: 20px;" >Library</a><hr>
         <a onmousedown="navigate(this);" id="Friends" class="sidebarText" style="margin-top: 20px;" >Friends</a>
         <a onmousedown="navigate(this);" id="index" class="sidebarText" style="margin-top: 20px; bottom: 120px; position: absolute; " >Logout</a><hr>
         <script>
@@ -99,10 +100,12 @@
               <?php
               //Search for the users friends
               include_once('../PHP/DataBase.php');
-              include_once('../PHP/User.php');
+              require_once('../PHP/User.php');
 
-              $dB = new DataBase();   
-              $userfriendsresult = $dB->sqli()->query("SELECT * FROM `{$_SESSION['username']}friends` WHERE FriendRequest=0");
+              $dB = new DataBase();
+              $userid = getUserId($_SESSION['username']);
+              echo $userid;
+              $userfriendsresult = $dB->sqli()->query("SELECT * FROM `{$userid}friends` WHERE FriendRequest=0");
               while($row = $userfriendsresult->fetch_assoc())
               {
                   echo '<tr><th scope="row">1</th>';
@@ -113,7 +116,7 @@
                       $Myuser->setUsername($user['Username']);
                       echo "<td><img name='img' style='width: 40px; height: 40px;' src='{$Myuser->getUserProfilePicture()}' /></td> \n";
                       echo "<td>{$user['Username']}</td>\n";
-                      echo '<form action="Send.php" method="POST" ><td><input type="submit" name="'.$user['Username'].'"class="btn btn-primary" ></button><button class="btn btn-danger" >Remove friend</button></td></tr></form>';
+                      echo '<form action="Send.php" method="POST" ><td><input type="submit" name="'.$user['Username'].'"class="btn btn-primary" ></button><button class="btn btn-danger"  disabled>Remove friend</button></td></tr></form>';
                   }
               }
             ?>

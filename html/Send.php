@@ -43,6 +43,8 @@
             <hr>
             <a onmousedown="navigate(this);" id="Upload" class="sidebarText" style="margin-top: 20px;" >Upload</a>
             <hr>
+            <a onmousedown="navigate(this);" id="Send" class="sidebarText" style="margin-top: 20px;" >Send</a><hr>
+
             <a onmousedown="navigate(this);" id="Library" class="sidebarText" style="margin-top: 20px;" >Library</a>
             <hr>
             <a onmousedown="navigate(this);" id="Friends" class="sidebarText" style="margin-top: 20px;" >Friends</a>
@@ -73,7 +75,7 @@
          <div class="middle" >
             <form action="../PHP/SendFiles.php" enctype="multipart/form-data" method="POST">
                <div class="dropdown" style="margin: 10px;" >
-                  <h2>Send to</h2>
+                  <h1>Send to</h1>
                   <button value="SelectFriend" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                      <input id="FriendChooser" name="chooser" type="text" style="background: rgb(0,0,0,0); border:none; color: white;" value="Select friend" readonly></button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -84,8 +86,9 @@
                         include_once('../PHP/DataBase.php');
                         require_once('../PHP/User.php');
                         
+                        $userid = getUserId($_SESSION['username']);
                         $dB = new DataBase();   
-                        $userfriendsresult = $dB->sqli()->query("SELECT * FROM `{$_SESSION['username']}friends` WHERE FriendRequest=0");
+                        $userfriendsresult = $dB->sqli()->query("SELECT * FROM `{$userid}friends` WHERE FriendRequest=0");
                         while($row = $userfriendsresult->fetch_assoc())
                         {
                           $result = $dB->sqli()->query("SELECT * FROM  `users` WHERE user={$row['FriendUserid']}");
@@ -111,7 +114,7 @@
                         ?>
                   </ul>
                </div>
-               <h2>Select file</h2>
+               <h1>Select file</h1>
                <input type="file" name="image" class="btn-primary" >
                <div style="height: 10px;" ></div>
                <input style="margin: 10px;"  type="submit" name="submit" class="btn btn-primary" value="Send">
