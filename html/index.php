@@ -1,7 +1,12 @@
 <?php
-
-  //echo $_SERVER['REMOTE_ADDR'];
-
+include("../PHP/Utilitis.php");
+  session_start();
+  if(isset($_COOKIE['remember_me']))
+  {
+      $_SESSION['username'] = $_COOKIE['remember_me'];
+      $sd = new utils();
+      $sd->setPage('/Sharer/html/Home.php');
+  }
 ?>
 <!doctype html>
 <html lang="en">
@@ -26,7 +31,7 @@
           
           <input name="password" type="password" placeholder="Enter Password" class="form-control" >
           <div class="space" ></div>
-          
+          <input type="checkbox" name="remember_me" ><h7 style="color:white;" >  Remember me</h7>
           <div class="col">
             <div class="row" >
                 <input type="submit" style="border-radius: 5px;" class="btn btn-primary" value="Login" onclick="login()" ></button>

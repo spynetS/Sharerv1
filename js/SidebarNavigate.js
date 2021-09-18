@@ -1,7 +1,12 @@
 
 function navigate(ele)
 {
-    var extention = ".php";
-    window.location.replace(ele.id+extention)
-
+    if(ele.id === "index")
+    {
+        window.location.replace("logout.php")
+    }
+    else{
+        var extention = ".php";
+        window.location.replace(ele.id+extention)
+    }
 }
