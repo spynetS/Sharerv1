@@ -33,12 +33,10 @@ if(isset($_POST['Download']))
     exit();    
 }
 else if(isset($_POST['Delete'])){
-    echo "delete";
-    //Delte row with file name
     $db = new DataBase();
     $userid= getUserId($_SESSION['username']); 
     $id = $_POST['id'];
     $result =$db->sqli()->query("DELETE FROM {$userid}files WHERE FileId='$id'");
-
+    exit();    
 }
 
