@@ -114,10 +114,10 @@
                   {
                       $Myuser = new User();
                       $Myuser->setUsername($user['Username']);
-                      echo "<td><img name='img' style='width: 40px; height: 40px;' src='{$Myuser->getUserProfilePicture()}' /></td> \n";
-                      echo "<td>{$user['Username']}</td>\n";
-                      echo '<form action="Send.php" method="POST" ><td><input type="submit" name="'.$user['Username'].'"class="btn btn-primary" ></button><button class="btn btn-danger"  disabled>Remove friend</button></td></tr></form>';
-                  }
+                      echo "<form action='../PHP/RemoveFriend.php' method='POST' > <td><img name='img' style='width: 40px; height: 40px;' src='{$Myuser->getUserProfilePicture()}' /></td> \n";
+                      echo "<td><input style='width:0px; height:0px;background-color:transparent;border:none;' name='friendusername' value='{$user['Username']}'>{$user['Username']}</td>\n";
+                      echo '<td><input type="submit" name="'.$user['Username'].'"class="btn btn-primary" ><input type="submit" name="removefriend" value="Remove friend" class="btn btn-danger"></td></tr></form>';
+                  } 
               }
             ?>
               </tbody>            
