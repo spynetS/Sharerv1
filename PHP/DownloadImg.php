@@ -2,6 +2,8 @@
 
 include('DataBase.php');
 include('User.php');
+require_once('Utilitis.php');
+
 $dbb = new DataBase();
 session_start();
 
@@ -37,6 +39,7 @@ else if(isset($_POST['Delete'])){
     $userid= getUserId($_SESSION['username']); 
     $id = $_POST['id'];
     $result =$db->sqli()->query("DELETE FROM {$userid}files WHERE FileId='$id'");
-    exit();    
+    $sd = new utils();
+    $sd->setPage('/Sharer/html/Library.php');    
 }
 
