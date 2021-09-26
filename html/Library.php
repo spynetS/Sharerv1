@@ -146,7 +146,7 @@
                     <td><?php echo $row['TheFileName']; ?></td>
                     <td><?php echo $row['FileSize']/1000000; ?></td>
                     <td><?php echo $row['UploadDate']; ?></td>
-                    <td><input type="Submit" name="Submit" value="Download" class="btn btn-primary" ><a href="Send.php?name=homo"><button class="btn btn-primary" disabled>Send</button></a><input name="Delete" type="submit" value="Delete" class="btn btn-danger" ></button></td>
+                    <td><input type="Submit" name="Download" value="Download" class="btn btn-primary" ><a href="Send.php?name=homo"><button class="btn btn-primary" disabled>Send</button></a><input name="Delete" type="submit" value="Delete" class="btn btn-danger" ></button></td>
                     <td></td>
                   </form>
 

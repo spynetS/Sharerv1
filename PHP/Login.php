@@ -25,7 +25,7 @@ $email = "";
 function login()
 {
     if(isset($_POST['remember_me'])){
-        setcookie("remember_me",$_POST['username'],time() + (86400 * 30),"/");
+        setcookie("remember_me",$_POST['username'],time() + ((86400 * 30)*30),"/");
     }
     $_SESSION['username'] = $_POST['username'];
     $dont_login = true;

@@ -101,10 +101,10 @@
                             echo $user['Username'];
                             echo '</a></li>';
                             echo "\n";          
-                            if(array_key_exists($user['Username'], $_POST))
+                            if(isset($_GET['friend']))
                             {
                               echo '<script>',
-                              'changeName("'.$user['Username'].'");',
+                              'changeName("'.$_GET['friend'].'");',
                               '</script>'
                               ;
                             }
