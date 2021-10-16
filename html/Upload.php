@@ -77,6 +77,25 @@
         <div class="middle">
           <form action="../PHP/UploadFiles.php" enctype="multipart/form-data" method="POST">
             <h1>Upload a photo</h1>
+            <h5><?php 
+            include_once('../PHP/DataBase.php');
+            include_once('../PHP/user.php');
+            $db = new DataBase();
+            $result = $db->sqli()->query("SELECT LibrarySize FROM `users` WHERE user=".getUserId($_SESSION['username'])."");
+            $fileSizes = $db->sqli()->query("SELECT FileSize FROM `".getUserId($_SESSION['username'])."files` WHERE 1");
+            $fileoccupation = 0;
+            while($row = $fileSizes->fetch_assoc())
+            {
+              $fileoccupation+= $row['FileSize'];
+            }
+            
+            
+            while($row = $result->fetch_assoc())
+            {
+              echo "You have ".(($row['LibrarySize']-$fileoccupation)/1000000)." mb left on the cloud";
+            }
+
+              ?></h5>
                 <input type="file" name="image" class="btn-primary" ><div style="height: 10px;" ></div>
             <input type="submit" name="submit" class="btn btn-primary" value="Upload">
         </form>

@@ -42,7 +42,7 @@ class DataBase
         
         if($conn)
         echo 'connection successfully to database';
-        $librarysize = 100000000;
+        $librarysize = 5000000000;
         $sql = "insert into users (Email,Username,Password,LibrarySize,ProfilePicture) values ('{$_POST['Email']}','{$_POST['Username']}','".password_hash($_POST['password'], PASSWORD_DEFAULT)."','{$librarysize}','')";
 
         $query = mysqli_query($conn,$sql);
