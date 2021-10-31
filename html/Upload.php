@@ -79,7 +79,7 @@
             <h1>Upload a photo</h1>
             <h5><?php 
             include_once('../PHP/DataBase.php');
-            include_once('../PHP/user.php');
+            include_once('../PHP/User.php');
             $db = new DataBase();
             $result = $db->sqli()->query("SELECT LibrarySize FROM `users` WHERE user=".getUserId($_SESSION['username'])."");
             $fileSizes = $db->sqli()->query("SELECT FileSize FROM `".getUserId($_SESSION['username'])."files` WHERE 1");
@@ -92,7 +92,7 @@
             
             while($row = $result->fetch_assoc())
             {
-              echo "You have ".(($row['LibrarySize']-$fileoccupation)/1000000)." mb left on the cloud";
+              echo "You have ".((round((intval($row['LibrarySize']-$fileoccupation)/1000000),2)))." mb left on the cloud";
             }
 
               ?></h5>
