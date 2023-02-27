@@ -12,10 +12,6 @@ if(isset($_POST['removefriend']))
     $frienduserid = getUserId($_POST['friendusername']);
     $db = new DataBase();
     $result = $db->sqli()->query("DELETE FROM `{$userid}friends` WHERE FriendUserid='{$frienduserid}'");
-    $result = $db->sqli()->query("DELETE FROM `{$frienduserid}friends` WHERE FriendUserid='{$userid}'");
-    $d = new utils();
-    $d->setPage("/Sharer/html/Friends.php");
-
 }
 else
 {

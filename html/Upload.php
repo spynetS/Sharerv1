@@ -96,6 +96,7 @@
             }
 
               ?></h5>
+
                 <input type="file" name="image" class="btn-primary" ><div style="height: 10px;" ></div>
             <input type="submit" name="submit" class="btn btn-primary" value="Upload">
         </form>
